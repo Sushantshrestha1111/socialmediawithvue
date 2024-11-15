@@ -5,12 +5,20 @@ import Main from './views/Main.vue';
 </script>
 
 <template>
- <NavBar/>
+ 
+ <NavBar/> <div class="bg- #fff mt-40">
+  <RouterView/>
 
-<RouterView/>
+ </div>
+
+
+
 
 </template>
 
 <style scoped>
-
+.app-container {
+  background-color: #fff; /* Set the background color to white */
+  min-height: 100vh;      /* Ensure it covers the full viewport height */
+}
 </style>
