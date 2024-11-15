@@ -1,7 +1,6 @@
 <template >
     <div>
-        <NAv/>
-        <h1>this is the main page</h1>
+        <h1>this is the main pagesdf</h1>
 
         
     </div>
