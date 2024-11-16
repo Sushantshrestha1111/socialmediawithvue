@@ -1,5 +1,5 @@
 <template>
-   <div class="stickey top-4">
+   <div class="">
     <h1><strong>Chat With Friends</strong> </h1> 
     <FriendsVue/>
     <FriendsVue/>
