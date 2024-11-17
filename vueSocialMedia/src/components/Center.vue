@@ -1,18 +1,49 @@
 <template>
     <div>
-        <Share/>
+      <!-- Share Component -->
+      <Share @post-submitted="addPost" />
+  
+      <!-- List of Posts -->
+      <div>
         <Post
-      description="A highly anticipated clash between social media sensation Jake Paul, 26, and the legendary boxer Mike Tyson, 58, is making waves in the combat sports world. The matchup pits a young, polarizing figure in modern boxing against a seasoned legend with an illustrious career."
-      postImage="https://scontent.fktm10-1.fna.fbcdn.net/v/t39.30808-6/467316533_1106436464186085_4897480705067023869_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeGdgWsvOZ-sVzJibHFw5d_xqirTTKD58RCqKtNMoPnxED4hedUw9bkPrnKCgWEMbcjAFFRHa9qQQlqL07Y_P9gu&_nc_ohc=3ugwmaRxbFEQ7kNvgHdGr8J&_nc_zt=23&_nc_ht=scontent.fktm10-1.fna&_nc_gid=AdP133SPpR8UNKNo0tISkty&oh=00_AYB5IwwFcb_8Rsx_koZ_CDmN8SUehPP2lITGxdurfjgFiw&oe=673F5D57"
-    />
-        
+          v-for="(post, index) in posts"
+          :key="index"
+          :description="post.description"
+          :postImage="post.imageUrl"
+        />
+      </div>
     </div>
-</template>
-<script setup>
-import Post from './Post.vue';
-import Share from './Share.vue';
-
-</script>
-<style >
-    
-</style>
+  </template>
+  
+  <script setup>
+  import Post from './Post.vue';
+  import Share from './Share.vue';
+  import { ref, onMounted } from 'vue';
+  
+  // Reactive state for posts
+  const posts = ref([]);
+  
+  // Function to load posts from local storage
+  const loadPostsFromLocalStorage = () => {
+    const storedPosts = localStorage.getItem('posts');
+    if (storedPosts) {
+      posts.value = JSON.parse(storedPosts);
+    }
+  };
+  
+  // Function to add a new post
+  const addPost = (newPost) => {
+    posts.value.unshift(newPost); // Add the new post at the top
+    localStorage.setItem('posts', JSON.stringify(posts.value)); // Update local storage
+  };
+  
+  // Load posts on component mount
+  onMounted(() => {
+    loadPostsFromLocalStorage();
+  });
+  </script>
+  
+  <style>
+  /* Optional custom styles */
+  </style>
+  
