@@ -3,7 +3,7 @@
       <div class="flex items-center max-w-6xl mx-auto px-6 h-14">
         <!-- Logo -->
         <div class="mr-4">
-          <a href="/home">
+          <a href="/">
             <img src="" alt="Logo" class="h-8" />
           </a>
         </div>
@@ -18,7 +18,11 @@
           <div class="absolute inset-y-0 left-2 flex items-center">
             <div class="absolute inset-y-0 left-2 flex items-center">
                 <!-- Using VIcon with IoSearchOutline -->
-                <VIcon name="IoSearchOutline" class="text-xl text-blue-500" />
+                <img
+                class=""
+                src="../assets/images/search-icon.svg"
+                alt="Profile"
+              />
               </div>
           </div>
         </div>
@@ -26,8 +30,27 @@
         <!-- Navigation -->
         <nav class="ml-auto hidden md:flex space-x-6">
             <v-icon name="IoSearchOutline" class="text-xl text-blue-500" />
-            <span class="text-black">msg</span>
-          <span class="text-black">Notif</span>
+            <RouterLink to="/message" class="text-black"><div>
+              <img
+              class=""
+              src="../assets/images/nav-messaging.svg"
+              alt="Profile"
+            /></div></RouterLink>
+    <RouterLink to="/notification" class="text-black"><div>
+      <img
+          class=""
+          src="../assets/images/nav-notifications.svg"
+          alt="Profile"
+        />
+    </div></RouterLink>
+
+    <RouterLink to="/" class="text-black"><div>
+      <img
+          class="w-8 h-8 rounded full"
+          src="../assets/images/user.svg"
+          alt="Profile"
+        />
+    </div></RouterLink>
          
         </nav>
       </div>

@@ -16,7 +16,20 @@ const router = createRouter({
       name:'profile',
       component:()=>import('../views/Profile.vue')
 
+     },
+    
+  
+    {
+      path:'/message',
+      name:'message',
+      component:()=>import('../views/Chat.vue')
+
     },
+    {
+      path:'/notification',
+      name:'notification',
+      component:()=>import('../views/Notification.vue')
+    }
   ],
 })
 
