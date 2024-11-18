@@ -1,82 +1,74 @@
 <template>
-    <div class="flex flex-col  rounded-md shadow-md bg-white my-4">
-      <!-- Post Detail -->
-      <div class="flex flex-row p-4">
-        <img
-          class="w-12 h-12 rounded-full"
-          src="../assets/images/my.jpg"
-          alt="Profile"
-        />
-        <div class="pl-4 pt-2 flex flex-col">
-          <span class="text-black text-xl italic"><strong>Sushant Shreshta</strong></span>
-          <span><strong>Feb</strong> 12</span>
-        </div>
-      </div>
-  
-      <!-- Description -->
-      <div class="text-gray-600 mx-4 my-2 font-serif text-lg leading-relaxed">
-        {{ description }}
-      </div>
-      <!-- Shared Image -->
-      <div class="bg-gray-50">
-        <a>
-          <img
-            class="object-contain w-full h-full p-2 pl-2 pr-2"
-            :src="postImage"
-            alt="Shared"
-          />
-        </a>
-      </div>
-  
-      <!-- Reaction Count -->
-      <div class="flex ml-6 mb-2 space-x-4">
-        <button class="flex items-center space-x-2">
-          <img
-            class="w-6 h-6"
-            src="../assets/images/like.png"
-            alt="Like Icon"
-          />
-          <img
-            class="w-6 h-6"
-            src="../assets/images/down-icon.svg"
-            alt="Down Icon"
-          />
-          <span>70</span>
-        </button>
-        <button>
-          <span>comments</span>
-        </button>
-      </div>
-  
-      <!-- Reaction Buttons -->
-      <div class="flex justify-around mt-2 pb-4">
-        <button class="px-4 py-2 bg-gray-100 rounded hover:bg-gray-200">
-          Like
-        </button>
-        <button class="px-4 py-2 bg-gray-100 rounded hover:bg-gray-200">
-          Comment
-        </button>
-        <button class="px-4 py-2 bg-gray-100 rounded hover:bg-gray-200">
-          Share
-        </button>
-      </div>
-  
-      <!-- Comment Section -->
-      <div class="p-4">
-       
+  <div class="flex flex-col rounded-md shadow-md bg-white my-4">
+    <!-- Post Detail -->
+    <div class="flex flex-row p-4">
+      <img
+        class="w-12 h-12 rounded-full"
+        src="../assets/images/my.jpg"
+        alt="Profile"
+      />
+      <div class="pl-4 pt-2 flex flex-col">
+        <span class="text-black text-xl italic"
+          ><strong>Sushant Shreshta</strong></span
+        >
+        <span><strong>Feb</strong> 12</span>
       </div>
     </div>
-  </template>
-  
-  <script setup>
-  defineProps({
-    description:String,
-    postImage:String
-    
-  })
-  </script>
-  
-  <style scoped>
-  /* No additional styles; everything is handled by Tailwind */
-  </style>
-  
+
+    <!-- Delete Button -->
+    <div>
+      <Popover>
+        <PopoverTrigger>
+          <button>...</button>
+        </PopoverTrigger>
+        <PopoverContent>
+          <div>
+            <button
+              class="text-red-500 hover:text-red-700"
+              @click="deletePost"
+            >
+              Delete Post
+            </button>
+          </div>
+        </PopoverContent>
+      </Popover>
+    </div>
+
+    <!-- Description -->
+    <div class="text-gray-600 mx-4 my-2 font-serif text-lg leading-relaxed">
+      {{ description }}
+    </div>
+
+    <!-- Shared Image -->
+    <div class="bg-gray-50">
+      <a>
+        <img
+          class="object-contain w-full h-full p-2 pl-2 pr-2"
+          :src="postImage"
+          alt="Shared"
+        />
+      </a>
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+
+defineProps({
+  id: Number, // Unique ID for the post
+  description: String,
+  postImage: String,
+});
+
+const emit = defineEmits(["delete-post"]); // Define the delete-post event
+
+// Emit delete-post event with the post's ID
+const deletePost = () => {
+  emit("delete-post", id);
+};
+</script>
+
+<style scoped>
+/* No additional styles; everything is handled by Tailwind */
+</style>

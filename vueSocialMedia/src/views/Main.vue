@@ -2,7 +2,7 @@
   <div class="app-container relative flex-row pt-10">
     
     <!-- Left Section -->
-    <div class="left-container sticky top-16">
+    <div class="left-container sticky top-16 hidden xl:block">
       <div class="sticky top-16"><LeftVue /></div>
       
     </div>

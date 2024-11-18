@@ -1,14 +1,18 @@
 <template>
   <div>
     <h1><strong>Chat With Friends</strong></h1>
-    asd
-    <FriendsVue
-    v-for="friend in friends"
-    :key="friend.id"
-    :firstName="friend.first_name"
-    :lastName="friend.last_name"
-    :avatar="friend.avatar"
-  />
+    <router-link
+        v-for="friend in friends"
+        :key="friend.id"
+        :to="`/message/${friend.id}`"
+        class="no-underline"
+      >
+        <FriendsVue
+          :firstName="friend.first_name"
+          :lastName="friend.last_name"
+          :avatar="friend.avatar"
+        />
+      </router-link>
   </div>
 </template>
 
