@@ -14,16 +14,15 @@
       </div>
   
       <!-- Description -->
-      <div class="text-black mx-4 my-2">
-        Here goes the description about the post some one says bla bla bal Here goes the description about the post some one says bla bla bal Here goes the description about the post some one says bla bla bal Here goes the description about the post some one says bla bla bal Here goes the description about the post some one says bla bla bal Here goes the description about the post some one says bla bla bal Here goes the description about the post some one says bla bla bal Here goes the description about the post some one says bla bla bal Here goes the description about the post some one says bla bla bal Here goes the description about the post some one says bla bla bal 
+      <div class="text-gray-600 mx-4 my-2 font-serif text-lg leading-relaxed">
+        {{ description }}
       </div>
-  
       <!-- Shared Image -->
       <div class="bg-gray-50">
         <a>
           <img
-            class="object-contain w-full h-full p-9"
-            src="../assets/images/meamido.jpg"
+            class="object-contain w-full h-full p-2 pl-2 pr-2"
+            :src="postImage"
             alt="Shared"
           />
         </a>
@@ -64,13 +63,17 @@
   
       <!-- Comment Section -->
       <div class="p-4">
-        <!-- Add your comment components here -->
+       
       </div>
     </div>
   </template>
   
   <script setup>
-  // No logic required in this example
+  defineProps({
+    description:String,
+    postImage:String
+    
+  })
   </script>
   
   <style scoped>
