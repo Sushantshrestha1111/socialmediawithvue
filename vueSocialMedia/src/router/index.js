@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-
+import singleMessage from "../views/Chat.vue"
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -26,10 +26,21 @@ const router = createRouter({
 
     },
     {
+      path:'/message/:id',
+      name:'singleMessage',
+      component:singleMessage
+
+    },
+    {
       path:'/notification',
       name:'notification',
       component:()=>import('../views/Notification.vue')
-    }
+    },
+    {
+      path:'/login',
+      name:'login',
+      component:()=>import('../views/Login.vue')
+    },
   ],
 })
 
